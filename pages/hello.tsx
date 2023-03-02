@@ -13,9 +13,12 @@ export default function Hello() {
       <div className='max-w-full'>
         <p className='text-center text-6xl font-bold'>Hello!!!</p>
         <div className='flex flex-col justify-center items-center'>
-          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold w-6/12 py-2 px-4 mt-4 rounded'>
-            <Link href='/'>Home</Link>
-          </button>
+          <Link
+            href='/'
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold w-6/12 py-2 px-4 mt-4 rounded text-center'
+          >
+            Home
+          </Link>
         </div>
       </div>
     </>
