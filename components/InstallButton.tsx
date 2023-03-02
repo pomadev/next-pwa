@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
 export const InstallButton = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null)
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null)
 
   useEffect(() => {
-    const handler = e => {
+    const handler = (e: any) => {
       e.preventDefault()
       setDeferredPrompt(e)
     }
@@ -17,7 +17,7 @@ export const InstallButton = () => {
   const installApp = () => {
     if (deferredPrompt) {
       deferredPrompt.prompt()
-      deferredPrompt.userChoice.then(choiceResult => {
+      deferredPrompt.userChoice.then((choiceResult: any) => {
         if (choiceResult.outcome === 'accepted') {
           console.log('User accepted the A2HS prompt')
         } else {
