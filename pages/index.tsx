@@ -23,7 +23,7 @@ export default function Home() {
             theme='dark'
           />
         ) : (
-          <Account />
+          <Account session={session} />
         )}
       </div>
     </>
