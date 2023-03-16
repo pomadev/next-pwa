@@ -1,8 +1,19 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { InstallButton } from '@/components/InstallButton'
+import { supabase } from '../lib/supabaseClient'
 
-export default function Home() {
+export async function getServerSideProps() {
+  let { data } = await supabase.from('countries').select()
+
+  return {
+    props: {
+      countries: data,
+    },
+  }
+}
+
+export default function Home({ countries }) {
   return (
     <>
       <Head>
@@ -25,6 +36,11 @@ export default function Home() {
           <InstallButton />
         </div>
       </div>
+      <ul>
+        {countries.map((country) => (
+          <li key={country.id}>{country.name}</li>
+        ))}
+      </ul>
     </>
   )
 }
