@@ -13,7 +13,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({ countries }) {
+export default function Home({ countries }: any) {
   return (
     <>
       <Head>
@@ -37,7 +37,7 @@ export default function Home({ countries }) {
         </div>
       </div>
       <ul>
-        {countries.map((country) => (
+        {countries.map((country: any) => (
           <li key={country.id}>{country.name}</li>
         ))}
       </ul>
