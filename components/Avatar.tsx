@@ -87,14 +87,14 @@ export default function Avatar({ uid, url, size, onUpload }: Props) {
         <label className='button primary block' htmlFor='single'>
           {uploading ? 'Uploading ...' : 'Upload'}
         </label>
-        <input
+        {/* <input
           style={{ visibility: 'hidden', position: 'absolute' }}
           type='file'
           id='single'
           accept='image/*'
           onChange={uploadAvatar}
           disabled={uploading}
-        />
+        /> */}
       </div>
     </div>
   )
