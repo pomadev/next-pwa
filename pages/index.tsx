@@ -12,7 +12,10 @@ export default function Home() {
     <>
       <Head>
         <title>Home</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover'
+        />
       </Head>
       <div className='container' style={{ padding: '50px 0 100px 0' }}>
         {!session ? (
