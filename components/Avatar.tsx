@@ -70,6 +70,7 @@ export default function Avatar({ uid, url, size, onUpload }: Props) {
   return (
     <div>
       {avatarUrl ? (
+        // Imageの上にカメラのマテリアルアイコンを重ねて、タップするとUploadAvatarできるようにする
         <Image
           src={avatarUrl}
           alt='Avatar'
@@ -87,14 +88,14 @@ export default function Avatar({ uid, url, size, onUpload }: Props) {
         <label className='button primary block' htmlFor='single'>
           {uploading ? 'Uploading ...' : 'Upload'}
         </label>
-        {/* <input
-          style={{ visibility: 'hidden', position: 'absolute' }}
+        <input
+          style={{ display: 'none' }}
           type='file'
           id='single'
           accept='image/*'
           onChange={uploadAvatar}
           disabled={uploading}
-        /> */}
+        />
       </div>
     </div>
   )
