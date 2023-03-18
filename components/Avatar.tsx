@@ -88,7 +88,7 @@ export default function Avatar({ uid, url, size, onUpload }: Props) {
           {uploading ? 'Uploading ...' : 'Upload'}
         </label>
         <input
-          style={{ visibility: 'hidden', position: 'absolute' }}
+          style={{ display: 'none' }}
           type='file'
           id='single'
           accept='image/*'
