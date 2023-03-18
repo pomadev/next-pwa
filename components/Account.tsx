@@ -4,6 +4,7 @@ import {
   useUser,
   useSupabaseClient,
 } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router'
 import Avatar from './Avatar'
 import { Database } from '../types/supabase'
 type Profiles = Database['public']['Tables']['profiles']['Row']
@@ -16,6 +17,7 @@ export default function Account({ session }: Props) {
   const supabase = useSupabaseClient<Database>()
   const user = useUser()
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
   const [username, setUsername] = useState<Profiles['username']>(null)
   const [website, setWebsite] = useState<Profiles['website']>(null)
   const [avatarUrl, setAvatarUrl] = useState<Profiles['avatar_url']>(null)
@@ -87,7 +89,7 @@ export default function Account({ session }: Props) {
   return (
     <div className='form-widget'>
       <Avatar
-        uid={user!.id}
+        uid={session.user.id}
         url={avatarUrl}
         size={150}
         onUpload={(url) => {
@@ -108,7 +110,7 @@ export default function Account({ session }: Props) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div className='mb-6'>
+      {/* <div className='mb-6'>
         <label htmlFor='website'>Website</label>
         <input
           id='website'
@@ -116,7 +118,7 @@ export default function Account({ session }: Props) {
           value={website || ''}
           onChange={(e) => setWebsite(e.target.value)}
         />
-      </div>
+      </div> */}
       <div className='mb-4'>
         <button
           className='button primary block'
@@ -129,7 +131,10 @@ export default function Account({ session }: Props) {
       <div>
         <button
           className='button block'
-          onClick={() => supabase.auth.signOut()}
+          onClick={async () => {
+            await supabase.auth.signOut()
+            router.push('/')
+          }}
         >
           Sign Out
         </button>

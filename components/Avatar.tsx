@@ -74,7 +74,7 @@ export default function Avatar({ uid, url, size, onUpload }: Props) {
         <Image
           src={avatarUrl}
           alt='Avatar'
-          className='avatar image'
+          className='avatar image mask mask-circle'
           width={size}
           height={size}
         />
