@@ -111,7 +111,10 @@ export default function Home() {
       )}
       <input type='checkbox' id='my-modal-3' className='modal-toggle' />
       <div className='modal'>
-        <div className='modal-box relative bg-gray-750'>
+        <div
+          className='modal-box relative'
+          style={{ backgroundColor: '#2A303C' }}
+        >
           <label
             htmlFor='my-modal-3'
             className='btn btn-sm btn-circle absolute right-2 top-2'
@@ -120,9 +123,10 @@ export default function Home() {
           </label>
           <div className='form-control mt-7'>
             <textarea
-              className='textarea textarea-bordered h-24 bg-gray-750 text-white'
+              className='textarea textarea-bordered h-24 text-white'
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              style={{ backgroundColor: '#2A303C' }}
             ></textarea>
             <label className='label flex-end text-white'>
               <span className='label-text-alt'>{content.length}/∞</span>
