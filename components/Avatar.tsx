@@ -70,10 +70,11 @@ export default function Avatar({ uid, url, size, onUpload }: Props) {
   return (
     <div>
       {avatarUrl ? (
+        // Imageの上にカメラのマテリアルアイコンを重ねて、タップするとUploadAvatarできるようにする
         <Image
           src={avatarUrl}
           alt='Avatar'
-          className='avatar image'
+          className='avatar image mask mask-circle'
           width={size}
           height={size}
         />
