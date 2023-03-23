@@ -6,8 +6,8 @@ import {
 } from '@supabase/auth-helpers-react'
 import { Timeline } from '../components/Timeline'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { Database } from '../types/supabase'
 type Post = Database['public']['Tables']['posts']['Row']
 type Profile = Database['public']['Tables']['profiles']['Row']
@@ -71,6 +71,12 @@ export default function Home() {
     }
   }
 
+  const router = useRouter()
+
+  const onClickButtonLink = (path: string) => {
+    router.push(path)
+  }
+
   return (
     <>
       <Head>
@@ -93,8 +99,11 @@ export default function Home() {
       </div>
       {!session ? (
         <div className='btm-nav bg-transparent'>
-          <button className='btn btn-circle text-blue-700 border-white'>
-            <Link href='/login'>ログイン</Link>
+          <button
+            className='btn btn-circle text-blue-700 border-white'
+            onClick={() => onClickButtonLink('/login')}
+          >
+            ログイン
           </button>
         </div>
       ) : (
@@ -102,10 +111,11 @@ export default function Home() {
           <button className='border-transparent rounded-none'>
             <Image src='/home.png' alt='home' width={30} height={30} />
           </button>
-          <button className='border-transparent rounded-none'>
-            <Link href='/settings/profile'>
-              <Image src='/person.png' alt='person' width={30} height={30} />
-            </Link>
+          <button
+            className='border-transparent rounded-none'
+            onClick={() => onClickButtonLink('/settings/profile')}
+          >
+            <Image src='/person.png' alt='person' width={30} height={30} />
           </button>
         </div>
       )}
