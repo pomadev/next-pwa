@@ -1,7 +1,7 @@
 {
   "theme_color": "#4a90e2",
   "background_color": "#ffffff",
-  "display": "standalone",
+  "display": "minimal-ui",
   "scope": "/",
   "start_url": "/",
   "name": "next-pwa",
