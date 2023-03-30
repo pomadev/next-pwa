@@ -108,7 +108,7 @@ export default function Home() {
         </div>
       ) : (
         <div className='btm-nav'>
-          <button className='border-transparent rounded-none'>
+          <button className='border-transparent rounded-none  bg-red-400'>
             <Image src='/home.png' alt='home' width={30} height={30} />
           </button>
           <button
