@@ -86,73 +86,71 @@ export default function Home() {
           content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover'
         />
       </Head>
-      <body>
-        <div className='container' style={{ padding: '50px 0 50px 0' }}>
-          {session && (
-            <label
-              htmlFor='my-modal-3'
-              className='fixed bottom-20 right-6 z-10 bg-blue-500 hover:bg-blue-600 btn btn-circle h-14 w-14 p-0 m-0 border-0'
-            >
-              <Image src='/pen.png' alt='投稿する' width={32} height={32} />
-            </label>
-          )}
-          <Timeline posts={posts} />
-        </div>
-        {!session ? (
-          <div className='btm-nav bg-transparent'>
-            <button
-              className='btn btn-circle text-blue-700 border-white'
-              onClick={() => onClickButtonLink('/login')}
-            >
-              ログイン
-            </button>
-          </div>
-        ) : (
-          <div className='btm-nav'>
-            <button className='border-transparent rounded-none'>
-              <Image src='/home.png' alt='home' width={30} height={30} />
-            </button>
-            <button
-              className='border-transparent rounded-none'
-              onClick={() => onClickButtonLink('/settings/profile')}
-            >
-              <Image src='/person.png' alt='person' width={30} height={30} />
-            </button>
-          </div>
+      <div className='container' style={{ padding: '50px 0 50px 0' }}>
+        {session && (
+          <label
+            htmlFor='my-modal-3'
+            className='fixed bottom-20 right-6 z-10 bg-blue-500 hover:bg-blue-600 btn btn-circle h-14 w-14 p-0 m-0 border-0'
+          >
+            <Image src='/pen.png' alt='投稿する' width={32} height={32} />
+          </label>
         )}
-        <input type='checkbox' id='my-modal-3' className='modal-toggle' />
-        <div className='modal'>
-          <div className='modal-box relative'>
+        <Timeline posts={posts} />
+      </div>
+      {!session ? (
+        <div className='btm-nav bg-transparent'>
+          <button
+            className='btn btn-circle text-blue-700 border-white'
+            onClick={() => onClickButtonLink('/login')}
+          >
+            ログイン
+          </button>
+        </div>
+      ) : (
+        <div className='btm-nav'>
+          <button className='border-transparent rounded-none'>
+            <Image src='/home.png' alt='home' width={30} height={30} />
+          </button>
+          <button
+            className='border-transparent rounded-none'
+            onClick={() => onClickButtonLink('/settings/profile')}
+          >
+            <Image src='/person.png' alt='person' width={30} height={30} />
+          </button>
+        </div>
+      )}
+      <input type='checkbox' id='my-modal-3' className='modal-toggle' />
+      <div className='modal'>
+        <div className='modal-box relative'>
+          <label
+            htmlFor='my-modal-3'
+            className='btn btn-sm btn-circle absolute right-2 top-2'
+          >
+            ✕
+          </label>
+          <div className='form-control mt-7'>
+            <textarea
+              className='textarea textarea-bordered h-24'
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            ></textarea>
+            <label className='label flex-end'>
+              <span className='label-text-alt'>{content.length}/∞</span>
+            </label>
+          </div>
+          <div className='modal-action mt-1'>
             <label
               htmlFor='my-modal-3'
-              className='btn btn-sm btn-circle absolute right-2 top-2'
+              className='btn'
+              onClick={async () => {
+                await createPost()
+              }}
             >
-              ✕
+              投稿
             </label>
-            <div className='form-control mt-7'>
-              <textarea
-                className='textarea textarea-bordered h-24'
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              ></textarea>
-              <label className='label flex-end'>
-                <span className='label-text-alt'>{content.length}/∞</span>
-              </label>
-            </div>
-            <div className='modal-action mt-1'>
-              <label
-                htmlFor='my-modal-3'
-                className='btn'
-                onClick={async () => {
-                  await createPost()
-                }}
-              >
-                投稿
-              </label>
-            </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   )
 }
