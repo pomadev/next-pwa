@@ -98,7 +98,7 @@ export default function Home() {
         <Timeline posts={posts} />
       </div>
       {!session ? (
-        <div className='btm-nav bg-transparent z-10'>
+        <div className='btm-nav bg-transparent'>
           <button
             className='btn btn-circle text-blue-700 border-white'
             onClick={() => onClickButtonLink('/login')}
@@ -107,7 +107,7 @@ export default function Home() {
           </button>
         </div>
       ) : (
-        <div className='btm-nav z-10'>
+        <div className='btm-nav'>
           <button className='border-transparent rounded-none'>
             <Image src='/home.png' alt='home' width={30} height={30} />
           </button>
