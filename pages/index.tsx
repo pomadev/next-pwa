@@ -90,7 +90,8 @@ export default function Home() {
         {session && (
           <label
             htmlFor='my-modal-3'
-            className='fixed bottom-20 right-6 z-10 bg-blue-500 hover:bg-blue-600 btn btn-circle h-14 w-14 p-0 m-0 border-0'
+            className='fixed right-6 z-10 bg-blue-500 hover:bg-blue-600 btn btn-circle h-14 w-14 p-0 m-0 border-0'
+            style={{ bottom: 'calc(80px + env(safe-area-inset-bottom))' }}
           >
             <Image src='/pen.png' alt='投稿する' width={32} height={32} />
           </label>
@@ -107,7 +108,10 @@ export default function Home() {
           </button>
         </div>
       ) : (
-        <div className='btm-nav'>
+        <div
+          className='btm-nav'
+          style={{ bottom: 'calc(env(safe-area-inset-bottom))' }}
+        >
           <button className='border-transparent rounded-none'>
             <Image src='/home.png' alt='home' width={30} height={30} />
           </button>
