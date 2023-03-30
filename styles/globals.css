@@ -20,6 +20,7 @@ body {
   margin: 0;
   font-family: var(--custom-font-family);
   background-color: var(--custom-bg-color);
+  padding-top: env(safe-area-inset-top);
 }
 
 * {
