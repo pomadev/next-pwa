@@ -113,6 +113,7 @@ export default function Home() {
           style={{
             paddingBottom: 'calc(env(safe-area-inset-bottom))',
             minHeight: 'calc(64px + env(safe-area-inset-bottom))',
+            backgroundColor: '#101010',
           }}
         >
           <button className='border-transparent rounded-none'>
