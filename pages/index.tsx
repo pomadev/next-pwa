@@ -110,7 +110,10 @@ export default function Home() {
       ) : (
         <div
           className='btm-nav'
-          style={{ bottom: 'calc(env(safe-area-inset-bottom))' }}
+          style={{
+            paddingBottom: 'calc(env(safe-area-inset-bottom))',
+            minHeight: 'calc(64px + env(safe-area-inset-bottom))',
+          }}
         >
           <button className='border-transparent rounded-none'>
             <Image src='/home.png' alt='home' width={30} height={30} />
