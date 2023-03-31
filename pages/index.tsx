@@ -8,6 +8,7 @@ import { Timeline } from '../components/Timeline'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import PullToRefresh from 'react-simple-pull-to-refresh'
 import { Database } from '../types/supabase'
 type Post = Database['public']['Tables']['posts']['Row']
 type Profile = Database['public']['Tables']['profiles']['Row']
@@ -77,6 +78,10 @@ export default function Home() {
     router.push(path)
   }
 
+  async function handleRefresh() {
+    await getPostsWithProfile()
+  }
+
   return (
     <>
       <Head>
@@ -96,7 +101,9 @@ export default function Home() {
             <Image src='/pen.png' alt='投稿する' width={32} height={32} />
           </label>
         )}
-        <Timeline posts={posts} />
+        <PullToRefresh onRefresh={handleRefresh}>
+          <Timeline posts={posts} />
+        </PullToRefresh>
       </div>
       {!session ? (
         <div className='btm-nav bg-transparent'>
