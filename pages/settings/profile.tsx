@@ -3,6 +3,7 @@ import { GetServerSidePropsContext } from 'next'
 import { Session } from '@supabase/auth-helpers-react'
 import Account from '../../components/Account'
 import Head from 'next/head'
+import Footer from '../../components/Footer'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const supabase = createServerSupabaseClient(ctx)
@@ -44,6 +45,7 @@ export default function Profile({
       <div className='container' style={{ padding: '50px 0 50px 0' }}>
         <Account session={initialSession} />
       </div>
+      <Footer />
     </>
   )
 }

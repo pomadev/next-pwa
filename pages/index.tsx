@@ -7,8 +7,8 @@ import {
 import { Timeline } from '../components/Timeline'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import PullToRefresh from 'react-simple-pull-to-refresh'
+import Footer from '../components/Footer'
 import { Database } from '../types/supabase'
 type Post = Database['public']['Tables']['posts']['Row']
 type Profile = Database['public']['Tables']['profiles']['Row']
@@ -72,12 +72,6 @@ export default function Home() {
     }
   }
 
-  const router = useRouter()
-
-  const onClickButtonLink = (path: string) => {
-    router.push(path)
-  }
-
   async function handleRefresh() {
     await getPostsWithProfile()
   }
@@ -105,35 +99,7 @@ export default function Home() {
           <Timeline posts={posts} />
         </PullToRefresh>
       </div>
-      {!session ? (
-        <div className='btm-nav bg-transparent'>
-          <button
-            className='btn btn-circle text-blue-700 border-white'
-            onClick={() => onClickButtonLink('/login')}
-          >
-            ログイン
-          </button>
-        </div>
-      ) : (
-        <div
-          className='btm-nav'
-          style={{
-            paddingBottom: 'calc(env(safe-area-inset-bottom))',
-            minHeight: 'calc(64px + env(safe-area-inset-bottom))',
-            backgroundColor: '#101010',
-          }}
-        >
-          <button className='border-transparent rounded-none'>
-            <Image src='/home.png' alt='home' width={30} height={30} />
-          </button>
-          <button
-            className='border-transparent rounded-none'
-            onClick={() => onClickButtonLink('/settings/profile')}
-          >
-            <Image src='/person.png' alt='person' width={30} height={30} />
-          </button>
-        </div>
-      )}
+      <Footer />
       <input type='checkbox' id='my-modal-3' className='modal-toggle' />
       <div className='modal'>
         <div className='modal-box relative'>
