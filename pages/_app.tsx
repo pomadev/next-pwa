@@ -23,12 +23,6 @@ export default function App({
         notifyButton: {
           enable: true,
         },
-        serviceWorkerParam: {
-          scope: '/js/push/onesignal/',
-        },
-        serviceWorkerPath: './js/push/onesignal/OneSignalSDKWorker.js',
-        serviceWorkerUpdaterPath:
-          '/js/push/onesignal/OneSignalSDKUpdaterWorker.js',
       })
     })
 
