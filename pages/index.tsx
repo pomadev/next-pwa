@@ -84,10 +84,6 @@ export default function Home() {
           name='viewport'
           content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover'
         />
-        <script
-          src='https://cdn.onesignal.com/sdks/OneSignalSDK.js'
-          async
-        ></script>
       </Head>
       <div className='container' style={{ padding: '32px 0 64px 0' }}>
         {session && (
