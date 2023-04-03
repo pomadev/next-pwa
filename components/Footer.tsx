@@ -9,6 +9,13 @@ export default function Footer() {
   const onClickButtonLink = (path: string) => {
     router.push(path)
   }
+  const isActive = (path: string) => {
+    return router.pathname === path
+  }
+  const activeStyle = {
+    borderTop: 'solid 3px white',
+    backgroundColor: '#4B5563',
+  }
 
   return (
     <>
@@ -31,14 +38,16 @@ export default function Footer() {
           }}
         >
           <button
-            className='border-transparent rounded-none'
+            className='border-none rounded-none'
             onClick={() => onClickButtonLink('/')}
+            style={isActive('/') ? activeStyle : {}}
           >
             <Image src='/home.png' alt='home' width={30} height={30} />
           </button>
           <button
-            className='border-transparent rounded-none'
+            className='border-none rounded-none'
             onClick={() => onClickButtonLink('/settings/profile')}
+            style={isActive('/settings/profile') ? activeStyle : {}}
           >
             <Image src='/person.png' alt='person' width={30} height={30} />
           </button>
