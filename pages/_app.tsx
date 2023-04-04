@@ -24,7 +24,6 @@ export default function App({
         serviceWorkerPath: './js/push/onesignal/OneSignalSDKWorker.js',
         serviceWorkerUpdaterPath:
           '/js/push/onesignal/OneSignalSDKUpdaterWorker.js',
-        allowLocalhostAsSecureOrigin: true,
       })
       // @ts-ignore
       OneSignal.showSlidedownPrompt()
