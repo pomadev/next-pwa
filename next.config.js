@@ -5,4 +5,14 @@ const withPWA = require('next-pwa')({
 
 module.exports = withPWA({
   // config
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lxqjnptvoxmjlwvjbqhu.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/avatars/**',
+      },
+    ],
+  },
 })

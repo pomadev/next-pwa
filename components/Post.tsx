@@ -43,6 +43,7 @@ export const Post = ({ username, avatarUrl, content }: Props) => {
               className='h-16 w-16 rounded-full'
               width={64}
               height={64}
+              blurDataURL='/noimage.png'
             />
             <p>{username}</p>
           </div>
