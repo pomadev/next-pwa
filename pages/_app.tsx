@@ -17,7 +17,7 @@ export default function App({
     OneSignal.push(function () {
       // @ts-ignore
       OneSignal.init({
-        appId: '9d61fe6c-9cbc-4649-855f-128f6cafe7ed',
+        appId: 'd16ff549-a691-4ebf-9871-c10dc2571e8b',
         serviceWorkerParam: {
           scope: '/js/push/onesignal/',
         },
