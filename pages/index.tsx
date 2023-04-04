@@ -48,6 +48,7 @@ export default function Home() {
         .from('posts')
         .select('id, content, created_at, updated_at, profiles (*)')
         .order('created_at', { ascending: false })
+        .limit(5)
 
       if (error) {
         throw error
