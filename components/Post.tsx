@@ -37,14 +37,19 @@ export const Post = ({ username, avatarUrl, content }: Props) => {
       <div className='card bg-gray-600'>
         <div className='card-title'>
           <div className='flex justify-between items-center space-x-4'>
-            <Image
+            <img
+              src={url || '/noimage.png'}
+              alt='Avatar'
+              className='h-16 w-16 rounded-full'
+            />
+            {/* <Image
               src={url || '/noimage.png'}
               alt='Avatar'
               className='h-16 w-16 rounded-full'
               width={64}
               height={64}
               blurDataURL='/noimage.png'
-            />
+            /> */}
             <p>{username}</p>
           </div>
         </div>
