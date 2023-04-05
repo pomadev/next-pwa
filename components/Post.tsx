@@ -44,7 +44,7 @@ export const Post = ({ username, avatarUrl, content }: Props) => {
             <p>{username}</p>
           </div>
         </div>
-        <div className='card-body'>{content}</div>
+        <div className='card-body whitespace-pre-wrap'>{content}</div>
       </div>
     </div>
   )
