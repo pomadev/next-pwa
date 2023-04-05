@@ -45,7 +45,7 @@ export default function Login() {
       </Head>
       <div className='container' style={{ padding: '50px 0 50px 0' }}>
         <Auth
-          providers={[]}
+          providers={['google']}
           supabaseClient={supabase}
           appearance={{ theme: ThemeSupa }}
           theme='dark'
