@@ -42,7 +42,7 @@ export default function Profile({
           content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover'
         />
       </Head>
-      <div className='container' style={{ padding: '50px 0 50px 0' }}>
+      <div className='container' style={{ padding: '32px 0 50px 0' }}>
         <Account session={initialSession} />
       </div>
       <Footer />

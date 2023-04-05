@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Database } from '../types/supabase'
@@ -37,12 +36,10 @@ export const Post = ({ username, avatarUrl, content }: Props) => {
       <div className='card bg-gray-600'>
         <div className='card-title'>
           <div className='flex justify-between items-center space-x-4'>
-            <Image
+            <img
               src={url || '/noimage.png'}
               alt='Avatar'
               className='h-16 w-16 rounded-full'
-              width={64}
-              height={64}
             />
             <p>{username}</p>
           </div>

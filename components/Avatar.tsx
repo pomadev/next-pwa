@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Database } from '../types/supabase'
 type Profiles = Database['public']['Tables']['profiles']['Row']
@@ -70,13 +69,10 @@ export default function Avatar({ uid, url, size, onUpload }: Props) {
   return (
     <div>
       {avatarUrl ? (
-        // Imageの上にカメラのマテリアルアイコンを重ねて、タップするとUploadAvatarできるようにする
-        <Image
+        <img
           src={avatarUrl}
           alt='Avatar'
-          className='avatar image mask mask-circle'
-          width={size}
-          height={size}
+          className='avatar image mask mask-circle h-52 w-36'
         />
       ) : (
         <div
