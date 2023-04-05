@@ -8,11 +8,23 @@ import { Timeline } from '../components/Timeline'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import PullToRefresh from 'react-simple-pull-to-refresh'
+import Script from 'next/script'
 import Footer from '../components/Footer'
 import { Database } from '../types/supabase'
 type Post = Database['public']['Tables']['posts']['Row']
 type Profile = Database['public']['Tables']['profiles']['Row']
 export type PostWithProfile = Post & { profiles: Profile }
+
+function Onesignal() {
+  return (
+    <>
+      <Script
+        src='https://cdn.onesignal.com/sdks/OneSignalSDK.js'
+        async={false}
+      />
+    </>
+  )
+}
 
 export default function Home() {
   const session = useSession()
@@ -100,6 +112,7 @@ export default function Home() {
         </PullToRefresh>
       </div>
       <Footer />
+      <Onesignal />
       <input type='checkbox' id='my-modal-3' className='modal-toggle' />
       <div className='modal'>
         <div className='modal-box relative'>
