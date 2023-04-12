@@ -15,6 +15,17 @@ type Post = Database['public']['Tables']['posts']['Row']
 type Profile = Database['public']['Tables']['profiles']['Row']
 export type PostWithProfile = Post & { profiles: Profile }
 
+function Tidio() {
+  return (
+    <>
+      <Script
+        src='//code.tidio.co/coslhgdkktbzloreoaprniknkctue5xr.js'
+        async={true}
+      ></Script>
+    </>
+  )
+}
+
 function Onesignal() {
   return (
     <>
@@ -113,6 +124,7 @@ export default function Home() {
       </div>
       <Footer />
       <Onesignal />
+      <Tidio />
       <input type='checkbox' id='my-modal-3' className='modal-toggle' />
       <div className='modal'>
         <div className='modal-box relative'>
