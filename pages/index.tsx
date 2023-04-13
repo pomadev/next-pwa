@@ -21,7 +21,7 @@ function Zenndesk() {
       <Script
         id='ze-snippet'
         src='https://static.zdassets.com/ekr/snippet.js?key=03522cc8-ae75-4207-9a65-9b802afa8a7a'
-        async={true}
+        // async={true}
       ></Script>
     </>
   )
@@ -79,6 +79,37 @@ export default function Home() {
 
   useEffect(() => {
     getPostsWithProfile()
+  }, [])
+
+  useEffect(() => {
+    // ウィジェットが初期化されるのを待つ
+    const zendeskLoaded = setInterval(() => {
+      // @ts-ignore
+      if (typeof window !== 'undefined' && window.zE) {
+        clearInterval(zendeskLoaded)
+
+        // イベントリスナを追加
+        // @ts-ignore
+        zE('webWidget:on', 'chat:unreadMessages', (data) => {
+          if (data.count > 0) {
+            // Onesignalを使ってプッシュ通知を送信
+            // @ts-ignore
+            OneSignal.push(function () {
+              // @ts-ignore
+              OneSignal.showNotification('新しいチャットメッセージ', {
+                body: 'サポートチームからの新しいメッセージがあります。',
+                icon: '<Notification Icon URL>',
+                tag: 'chat-message',
+              })
+            })
+          }
+        })
+      }
+    }, 100)
+
+    return () => {
+      clearInterval(zendeskLoaded)
+    }
   }, [])
 
   async function getPostsWithProfile() {
