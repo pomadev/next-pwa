@@ -90,18 +90,17 @@ export default function Home() {
 
         // イベントリスナを追加
         // @ts-ignore
-        zE('messenger:on', 'unreadMessages', function (count) {
-          console.log(`You have ${count} unread message(s).`)
-          // Onesignalを使ってプッシュ通知を送信
-          if (count > 0) {
+        zE('webWidget:on', 'chat:unreadMessages', (data) => {
+          if (data.count > 0) {
+            // Onesignalを使ってプッシュ通知を送信
             // @ts-ignore
             OneSignal.push(function () {
               // @ts-ignore
-              OneSignal.sendSelfNotification(
-                '新しいチャットメッセージが届いています。',
-                'メッセージ',
-                'https://next-pwa-gray.vercel.app/',
-              )
+              OneSignal.showNotification('新しいチャットメッセージ', {
+                body: 'サポートチームからの新しいメッセージがあります。',
+                icon: '<Notification Icon URL>',
+                tag: 'chat-message',
+              })
             })
           }
         })
